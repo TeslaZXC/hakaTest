@@ -33,8 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-// script.js
-
 let icon = {
     success:
     '<span class="material-symbols-outlined">task_alt</span>',
@@ -104,3 +102,34 @@ warn.addEventListener("click", (e) => {
     e.preventDefault();
     showToast("Внимание!","warning",7000);
 });
+
+
+
+
+
+
+// Находим кнопку
+const themeToggleButton = document.getElementById('theme-toggle');
+
+// Функция переключения темы
+themeToggleButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme'); // Переключаем класс "dark-theme" на <body>
+    
+    // Сохраняем текущую тему в localStorage
+    const isDark = document.body.classList.contains('dark-theme');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
+// Проверяем сохранённую тему при загрузке страницы
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+    }
+});
+
+
+
+
+
+
